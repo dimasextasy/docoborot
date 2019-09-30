@@ -4,7 +4,7 @@ from django.template.loader import get_template
 
 def home_page(request):
 	my_title = "hello universe!"
-	return render(request, "home.html", {"title": my_title})
+	return render(request, "home.html", {"title": my_title, "my_list": [1, 2, 3, 4, 5]})
 
 def about_page(request):
 	my_title = "hello universe!"
