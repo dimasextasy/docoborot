@@ -3,10 +3,13 @@ from django.shortcuts import render
 from django.template.loader import get_template
 
 from .forms import ContactForm
+from stock.models import StockItem
 
 def home_page(request):
-	my_title = "hello universe!"
-	return render(request, "home.html", {"title": my_title, "my_list": [1, 2, 3, 4, 5]})
+	my_title = "Лабораторный проект по Документообороту"
+	qs = StockItem.objects.all()[:5]
+	context = {"title": my_title, "stock_list": qs}
+	return render(request, "home.html", context)
 
 def about_page(request):
 	my_title = "hello universe!"
