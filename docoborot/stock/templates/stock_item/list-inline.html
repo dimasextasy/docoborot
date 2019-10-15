@@ -1,0 +1,24 @@
+<div class='col-12 col-md-6 mx-auto'>
+<div class='card {% if not stock_item.content %} bg-dark text-light {% endif %}'>
+	<div class='card-body'>
+		{% if stock_item.image %}
+			<a href="{{ stock_item.get_absolute_url }}">
+			<img src="{{ stock_item.image.url }}" class='card-img-top'/>
+		    </a>
+		{% endif %}
+		<h5 class='card-title'>{{ stock_item.title }}</h5>
+		<p class='card-text'>
+			<small class='text-muted'>publish_date</small>
+			{% if truncate %}
+				{{ stock_item.content|linebreaks|truncatewords:30 }}
+			{% else %}
+				{{ stock_item.content|linebreaks }}
+			{% endif %}
+	    </p>
+		{% if not detail %}
+			{% if not stock_item.content %} Draft {% endif %}
+			<a href="{{ stock_item.get_absolute_url }}">View</a>
+		{% endif %}
+	</div>
+</div>
+</div>
