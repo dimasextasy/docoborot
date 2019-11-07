@@ -42,6 +42,7 @@ INSTALLED_APPS = [
 
     'stock',
     'searches',
+    'partner',
 ]
 
 MIDDLEWARE = [

@@ -22,12 +22,15 @@ from searches.views import search_view
 from stock.views import ( 
 	stock_item_create_view,
 	)
+from partner.views import partner_create_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('search/', search_view),
     path('stock-new/', stock_item_create_view),
     path('stock/', include('stock.urls')),
+    path('partner/', include('partner.urls')),
+    path('partner-new/', partner_create_view),
     path('contact/', contact_page),
     path('about/', about_page),
     path('example/', example_page),

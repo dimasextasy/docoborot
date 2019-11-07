@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+	 <a href="{{ object.get_create_url }}">Create</a>
+     <div class='row'>
+	{% for object in object_list %}
+		{% include 'partner/list-inline.html' with partner=object truncate=True detail=False %}
+	{% endfor %}
+	</div>
+{% endblock %}
