@@ -1,6 +1,7 @@
 from django import forms
 
 from .models import StockItem
+from .models import Partner
 
 class StockItemForm(forms.Form):
 	title = forms.CharField()
@@ -23,3 +24,18 @@ class StockItemModelForm(forms.ModelForm):
 		if qs.exists():
 		    raise forms.ValidationError("This title has already been used. Please try again.")
 		return title		
+
+
+
+
+class PartnerForm(forms.Form):
+	name = forms.CharField()
+	surname = forms.CharField()
+	patronymic = forms.CharField()
+	company_name = forms.CharField()
+
+
+class PartnerModelForm(forms.ModelForm):
+	class Meta:
+		model = Partner
+		fields = ['name', 'surname', 'patronymic', 'company_name']		

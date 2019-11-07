@@ -39,3 +39,82 @@ class StockItem(models.Model): #stockitem_set.all()
 
 	def get_delete_url(self):
 	    return "{0}/delete".format(self.get_absolute_url())	   
+
+
+# Create your models here.
+class Product(models.Model): #stockitem_set.all()
+	name = models.CharField(max_length=120)
+	title = models.CharField(max_length=120)
+	purchase_price = models.DecimalField()
+	selling_field = models.DecimalField()
+	stock_id = models.ForeignKey(StockItem, default=1, on_delete=models.CASCADE, null=False)
+
+	class Meta:
+		ordering = ['-pk']
+
+	def get_absolute_url(self):
+	    return "/product/{0}".format(self.slug)
+
+	def get_edit_url(self):
+	    return "{0}/edit".format(self.get_absolute_url())	    
+
+	def get_delete_url(self):
+	    return "{0}/delete".format(self.get_absolute_url())	   
+
+class Partner(models.Model): #stockitem_set.all()
+	name = models.CharField(max_length=120)
+	surname = models.CharField(max_length=120)
+	patronymic  = models.CharField(max_length=120)
+	company_name   = models.CharField(max_length=120)
+
+	class Meta:
+		ordering = ['-pk']
+
+	def get_absolute_url(self):
+	    return "/partner/{0}".format(self.id)
+
+	def get_create_url(self):
+	    return "/partner-new/"    
+
+	def get_edit_url(self):
+	    return "{0}/edit".format(self.get_absolute_url())	    
+
+	def get_delete_url(self):
+	    return "{0}/delete".format(self.get_absolute_url())	   		   
+
+class DealType(models.Model):
+	value = models.CharField()
+
+	class Meta:
+		ordering = ['-pk']
+
+class Deal(models.Model):
+	partner_id = models.ForeignKey(Partner, default=1, on_delete=models.CASCADE, null=False)
+	date = models.DateField()
+	deal_type   = models.ForeignKey(DealType, default=1, on_delete=models.CASCADE, null=False)
+
+	class Meta:
+		ordering = ['-pk']
+
+	def get_absolute_url(self):
+	    return "/deal/{0}".format(self.id)
+
+	def get_create_url(self):
+	    return "/deal-new/"    
+
+	def get_edit_url(self):
+	    return "{0}/edit".format(self.get_absolute_url())	    
+
+	def get_delete_url(self):
+	    return "{0}/delete".format(self.get_absolute_url())
+
+
+class DealProduct(models.Model):
+	deal_id = models.ForeignKey(Deal, default=1, on_delete=models.CASCADE, null=False)
+	product_id = models.ForeignKey(Product, default=1, on_delete=models.CASCADE, null=False)
+	count = models.DecimalField()
+
+	class Meta:
+		ordering = ['-pk'] 
+
+	    
