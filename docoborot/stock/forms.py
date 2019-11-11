@@ -26,8 +26,6 @@ class StockItemModelForm(forms.ModelForm):
 		return title		
 
 
-
-
 class PartnerForm(forms.Form):
 	name = forms.CharField()
 	surname = forms.CharField()

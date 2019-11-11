@@ -2,12 +2,12 @@
 
 {% block content %}
 <div class='row'>
-	{% include 'stock_item/list-inline.html' with stock_item=object detail=True %}
+	{% include 'stock_item/list-inline.html' with stock_item=stock_item detail=True %}
 	{% if request.user.is_authenticated %}
 		{% if request.user.is_staff %}
 			<div class='col-12'>
-				<a href="{{ object.get_edit_url }}">Edit</a>
-				<a href="{{ object.get_delete_url }}">Delete</a>
+				<a href="{{ stock_item.get_edit_url }}">Edit</a>
+				<a href="{{ stock_item.get_delete_url }}">Delete</a>
 			</div>
 		{% endif %}
 	{% endif %}
