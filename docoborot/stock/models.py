@@ -32,7 +32,7 @@ class StockItem(models.Model): #stockitem_set.all()
 		ordering = ['-pk']
 
 	def get_absolute_url(self):
-	    return "{0}".format(self.slug)
+		return "{0}".format(self.slug)
 
 	def get_edit_url(self):
 		print(self.get_absolute_url())
@@ -40,7 +40,7 @@ class StockItem(models.Model): #stockitem_set.all()
 		return "{0}/edit".format(self.get_absolute_url())	    
 
 	def get_delete_url(self):
-	    return "{0}/delete".format(self.get_absolute_url())	   
+		return "/delete".format()
 
 
 # Create your models here.
@@ -57,7 +57,7 @@ class Product(models.Model): #stockitem_set.all()
 	def get_absolute_url(self):
 	    return "/product/{0}".format(self.slug)
 
-	def product_get_edit_url(self):
+	def get_edit_url(self):
 	    return "{0}/edit".format(self.get_absolute_url())	    
 
 	def get_delete_url(self):
@@ -78,7 +78,7 @@ class Partner(models.Model): #stockitem_set.all()
 	def get_create_url(self):
 	    return "/partner-new/"    
 
-	def partner_get_edit_url(self):
+	def get_edit_url(self):
 	    return "{0}/edit".format(self.get_absolute_url())	    
 
 	def get_delete_url(self):

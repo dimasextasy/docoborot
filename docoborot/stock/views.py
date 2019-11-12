@@ -37,7 +37,7 @@ def stock_item_create_view(request):
 def stock_item_detail_view(request, slug):
 	obj = get_object_or_404(StockItem, slug=slug)
 	template_name = 'stock_item/detail.html'
-	context = {"stock_item": obj}
+	context = {"object": obj}
 	return render(request, template_name, context)
 
 @staff_member_required
@@ -69,7 +69,7 @@ from .models import Partner
 
 def partner_list_view(request):
 	qs = Partner.objects.all()
-	template_name = 'partner/list.html'
+	template_name = 'stock_item/list.html'
 	context = {'object_list': qs}
 	return render(request, template_name, context)
 
@@ -92,7 +92,7 @@ def partner_create_view(request):
 
 def partner_detail_view(request, id):
 	obj = get_object_or_404(Partner, id=id)
-	template_name = 'partner/detail.html'
+	template_name = 'stock_item/detail.html'
 	context = {"object": obj}
 	return render(request, template_name, context)
 
