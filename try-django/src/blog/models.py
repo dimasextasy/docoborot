@@ -63,3 +63,37 @@ class BlogPost(models.Model): # blogpost_set -> queryset
     def get_delete_url(self):
         return "{0}/delete".format(self.get_absolute_url())
 
+
+class StockItem(models.Model):
+    name  = models.CharField(max_length=120)
+
+
+class Product(models.Model): #stockitem_set.all()
+    name = models.CharField(max_length=120)
+    title = models.CharField(max_length=120)
+    purchase_price = models.DecimalField(max_digits=10, decimal_places=2)
+    selling_field = models.DecimalField(max_digits=10, decimal_places=2)
+    stock_id = models.ForeignKey(StockItem, default=1, on_delete=models.CASCADE, null=False)
+
+
+class Partner(models.Model): #stockitem_set.all()
+    name = models.CharField(max_length=120)
+    surname = models.CharField(max_length=120)
+    patronymic  = models.CharField(max_length=120)
+    company_name   = models.CharField(max_length=120)
+
+
+class DealType(models.Model):
+    value = models.CharField(max_length=120)
+
+
+class Deal(models.Model):
+    partner_id = models.ForeignKey(Partner, default=1, on_delete=models.CASCADE, null=False)
+    date = models.DateField()
+    deal_type   = models.ForeignKey(DealType, default=1, on_delete=models.CASCADE, null=False)
+
+
+class DealProduct(models.Model):
+    deal_id = models.ForeignKey(Deal, default=1, on_delete=models.CASCADE, null=False)
+    product_id = models.ForeignKey(Product, default=1, on_delete=models.CASCADE, null=False)
+    count = models.DecimalField(max_digits=10, decimal_places=2)
