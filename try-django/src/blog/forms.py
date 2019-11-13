@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import BlogPost 
+from .models import BlogPost, Partner
 
 class BlogPostForm(forms.Form):
     title = forms.CharField()
@@ -8,6 +8,10 @@ class BlogPostForm(forms.Form):
     content = forms.CharField(widget=forms.Textarea)
 
 
+class PartnerModelForm(forms.ModelForm):
+    class Meta:
+        model = Partner
+        fields = ['name', 'surname', 'patronymic', 'company_name']
 
 class BlogPostModelForm(forms.ModelForm):
     class Meta:

@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path, re_path, include # url
 from blog.views import (
     blog_post_create_view,
+    objects_create_view
 )
 
 from searches.views import search_view
@@ -33,6 +34,7 @@ urlpatterns = [
     path('', home_page),
 
     path('blog-new/', blog_post_create_view),
+    path('<str:object_name>-new/', objects_create_view),
     path('blog/', include('blog.urls')),
     path('search/', search_view),
     # re_path(r'^blog/(?P<slug>\w+)/$', blog_post_detail_view),

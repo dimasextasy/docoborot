@@ -64,7 +64,7 @@ class BlogPost(models.Model): # blogpost_set -> queryset
         return "{0}/delete".format(self.get_absolute_url())
 
 
-class StockItem(models.Model):
+class Stock(models.Model):
     name  = models.CharField(max_length=120)
 
 
@@ -73,7 +73,7 @@ class Product(models.Model): #stockitem_set.all()
     title = models.CharField(max_length=120)
     purchase_price = models.DecimalField(max_digits=10, decimal_places=2)
     selling_field = models.DecimalField(max_digits=10, decimal_places=2)
-    stock_id = models.ForeignKey(StockItem, default=1, on_delete=models.CASCADE, null=False)
+    stock_id = models.ForeignKey(Stock, default=1, on_delete=models.CASCADE, null=False)
 
 
 class Partner(models.Model): #stockitem_set.all()
